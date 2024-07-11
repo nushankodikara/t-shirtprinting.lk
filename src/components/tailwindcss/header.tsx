@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import {
   Dialog,
   DialogPanel,
@@ -11,15 +12,7 @@ import {
   PopoverGroup,
   PopoverPanel,
 } from "@headlessui/react";
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {
   ChevronDownIcon,
   PhoneIcon,
@@ -29,39 +22,27 @@ import {
 
 const products = [
   {
-    name: "Analytics",
-    description: "Get a better understanding of your traffic",
+    name: "Mugs",
+    description: "Printed regular and magic mugs",
     href: "#",
-    icon: ChartPieIcon,
+    icon: "/icons/mug.png",
   },
   {
-    name: "Engagement",
-    description: "Speak directly to your customers",
+    name: "T-Shirts",
+    description: "Highest quality printed t-shirts for your events",
     href: "#",
-    icon: CursorArrowRaysIcon,
+    icon: "/icons/tshirt.png",
   },
   {
-    name: "Security",
-    description: "Your customers’ data will be safe and secure",
+    name: "Caps",
+    description: "Custom printed caps for your brand",
     href: "#",
-    icon: FingerPrintIcon,
-  },
-  {
-    name: "Integrations",
-    description: "Connect with third-party tools",
-    href: "#",
-    icon: SquaresPlusIcon,
-  },
-  {
-    name: "Automations",
-    description: "Build strategic funnels that will convert",
-    href: "#",
-    icon: ArrowPathIcon,
+    icon: "/icons/cap.png",
   },
 ];
 const callsToAction = [
-  { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-  { name: "Contact sales", href: "#", icon: PhoneIcon },
+  { name: "View in 3D", href: "/3d-models", icon: PlayCircleIcon },
+  { name: "Request Quotation", href: "/quotation", icon: PhoneIcon },
 ];
 
 function classNames(...classes: string[]) {
@@ -104,7 +85,7 @@ export const Header = () => {
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
             <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-              Product
+              Products
               <ChevronDownIcon
                 className="h-5 w-5 flex-none text-gray-400"
                 aria-hidden="true"
@@ -122,9 +103,11 @@ export const Header = () => {
                     className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
                   >
                     <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                      <item.icon
-                        className="h-6 w-6 text-gray-600 group-hover:text-indigo-600"
-                        aria-hidden="true"
+                      <Image
+                        width={32}
+                        height={32}
+                        src={item.icon}
+                        alt={item.name}
                       />
                     </div>
                     <div className="flex-auto">
@@ -158,14 +141,23 @@ export const Header = () => {
             </PopoverPanel>
           </Popover>
 
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Features
+          <a
+            href="/shop"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Shop
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Marketplace
+          <a
+            href="/services"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Our Services
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Company
+          <a
+            href="/contact"
+            className="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Contact Us
           </a>
         </PopoverGroup>
         {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end">
