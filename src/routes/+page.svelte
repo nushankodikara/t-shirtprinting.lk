@@ -1,2 +1,8 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import Item from '$lib/chunks/Item.svelte';
+</script>
+
+<!-- Gallery -->
+<div class="m-0 grid grid-cols-1 gap-0 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+	<Item />
+</div>
